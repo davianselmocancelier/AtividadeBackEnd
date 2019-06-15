@@ -12,5 +12,5 @@ import br.unisul.web.domain.Livro;
 public interface LivroRepository extends JpaRepository<Livro, Integer > {
 	
 	@Transactional(readOnly=true)
-	public List<Livro> findAllByOrderByUf();
+	public List<Livro> findAllByOrderById();
 }

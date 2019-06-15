@@ -1,22 +1,13 @@
 package br.unisul.web.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.ManyToOne;	
 
 @Entity
 public class Autores implements Serializable {
@@ -29,6 +20,7 @@ public class Autores implements Serializable {
 	private String nome;
 	private String sexo;
 	private Integer idade;
+	
 
 	@ManyToOne
 	@JoinColumn(name = "livro_id")
@@ -37,9 +29,9 @@ public class Autores implements Serializable {
 	public Autores() {
 	}
 
-	public Autores(Integer id, String nome, String sexo, Integer idade, Autores autor) {
-		super();
+	public Autores(Integer id, String nome, String sexo, Integer idade, Livro livro) {
 		this.id = id;
+		this.livro = livro;
 		this.nome = nome;
 		this.idade = idade;
 		this.sexo = sexo;
@@ -78,9 +70,17 @@ public class Autores implements Serializable {
 		this.idade = idade;
 	}
 
+	public Livro getLivro() {
+		return livro;
+	}
+	
 	public void setLivro(Livro livro) {
 		this.livro = livro;
 	}
+	
+	
+
+	
 
 	@Override
 	public int hashCode() {

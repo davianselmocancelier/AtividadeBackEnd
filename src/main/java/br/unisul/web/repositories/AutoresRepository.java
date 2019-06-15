@@ -14,7 +14,7 @@ import br.unisul.web.domain.Autores;
 public interface AutoresRepository extends JpaRepository<Autores, Integer>{
 	
 	@Transactional(readOnly=true)
-	@Query("SELECT obj FROM Cidade obj WHERE obj.estado.id = :estadoId ORDER BY obj.nome")
+	@Query("SELECT obj FROM Autores obj WHERE obj.livro.id = :livroId ORDER BY obj.nome")
 	public List<Autores> findAutores(@Param("livroId") Integer livro_id);
 	
 
